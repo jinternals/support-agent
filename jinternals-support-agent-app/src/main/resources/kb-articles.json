@@ -1,0 +1,162 @@
+[
+  {
+    "id": "kb-001",
+    "title": "How to Reset Your Password",
+    "category": "Account",
+    "tags": ["password", "reset", "login"],
+    "content": "To reset your password, click 'Forgot Password' on the login screen, enter your email, and follow the emailed instructions.",
+    "url": "https://support.example.com/articles/reset-password"
+  },
+  {
+    "id": "kb-002",
+    "title": "How to Change Your Email Address",
+    "category": "Account",
+    "tags": ["email", "change", "account"],
+    "content": "Navigate to Settings > Account > Email. Enter your new email, confirm it, and complete verification.",
+    "url": "https://support.example.com/articles/change-email"
+  },
+  {
+    "id": "kb-003",
+    "title": "Enabling Two-Factor Authentication (2FA)",
+    "category": "Security",
+    "tags": ["2fa", "authentication", "security"],
+    "content": "Go to Settings > Security > 2FA and choose SMS or authenticator app. Follow the setup steps to enable extra security.",
+    "url": "https://support.example.com/articles/enable-2fa"
+  },
+  {
+    "id": "kb-004",
+    "title": "How to Cancel Your Subscription",
+    "category": "Billing",
+    "tags": ["cancel", "subscription", "billing"],
+    "content": "Visit Billing > Subscriptions and click 'Cancel Subscription'. Your access remains active until the end of the billing cycle.",
+    "url": "https://support.example.com/articles/cancel-subscription"
+  },
+  {
+    "id": "kb-005",
+    "title": "Troubleshooting 500 Internal Server Error",
+    "category": "Troubleshooting",
+    "tags": ["500", "server error"],
+    "content": "A 500 error usually means a server issue. Try again later or check https://status.example.com for known outages.",
+    "url": "https://support.example.com/articles/500-error"
+  },
+  {
+    "id": "kb-006",
+    "title": "Understanding Your Invoice",
+    "category": "Billing",
+    "tags": ["invoice", "billing", "charges"],
+    "content": "Each invoice lists services used, prorated amounts, and taxes. Visit Billing > Invoices to download details.",
+    "url": "https://support.example.com/articles/invoice-guide"
+  },
+  {
+    "id": "kb-007",
+    "title": "How to Upgrade Your Plan",
+    "category": "Billing",
+    "tags": ["upgrade", "plan", "billing"],
+    "content": "In Billing > Plans, click 'Upgrade'. Choose your new plan, confirm changes, and billing will update on your next cycle.",
+    "url": "https://support.example.com/articles/upgrade-plan"
+  },
+  {
+    "id": "kb-008",
+    "title": "How to Contact Support",
+    "category": "Support",
+    "tags": ["support", "help", "contact"],
+    "content": "Click 'Help' on any page or email support@example.com. Support is available 24/7 for paid users.",
+    "url": "https://support.example.com/articles/contact-support"
+  },
+  {
+    "id": "kb-009",
+    "title": "How to Download Your Data",
+    "category": "Privacy",
+    "tags": ["data", "download", "privacy"],
+    "content": "Go to Settings > Privacy > Download Data. You’ll receive a link via email once your archive is ready.",
+    "url": "https://support.example.com/articles/download-data"
+  },
+  {
+    "id": "kb-010",
+    "title": "Resetting 2FA When Locked Out",
+    "category": "Security",
+    "tags": ["2fa", "reset", "locked out"],
+    "content": "If you’ve lost access to your 2FA, contact support with ID verification to reset it.",
+    "url": "https://support.example.com/articles/reset-2fa"
+  },
+  {
+    "id": "kb-011",
+    "title": "How to Add Team Members",
+    "category": "Teams",
+    "tags": ["team", "invite", "users"],
+    "content": "Admin users can add members via Settings > Team > Add Member. You’ll need their email address.",
+    "url": "https://support.example.com/articles/add-team-members"
+  },
+  {
+    "id": "kb-012",
+    "title": "Inviting External Collaborators",
+    "category": "Teams",
+    "tags": ["collaborators", "guest access"],
+    "content": "Go to Projects > Share > Invite Collaborator. Enter their email and assign read/write permissions.",
+    "url": "https://support.example.com/articles/invite-collaborator"
+  },
+  {
+    "id": "kb-013",
+    "title": "Supported Payment Methods",
+    "category": "Billing",
+    "tags": ["payment", "card", "paypal"],
+    "content": "We accept Visa, MasterCard, AMEX, and PayPal. You can update your payment method in Billing > Payment Info.",
+    "url": "https://support.example.com/articles/payment-methods"
+  },
+  {
+    "id": "kb-014",
+    "title": "How to View Login History",
+    "category": "Security",
+    "tags": ["login", "history", "security"],
+    "content": "Visit Settings > Security > Login History. You’ll see login locations, IPs, and device details.",
+    "url": "https://support.example.com/articles/login-history"
+  },
+  {
+    "id": "kb-015",
+    "title": "Enabling Dark Mode",
+    "category": "Preferences",
+    "tags": ["theme", "dark mode", "settings"],
+    "content": "In Settings > Appearance, switch to 'Dark Mode' for reduced eye strain and battery usage.",
+    "url": "https://support.example.com/articles/dark-mode"
+  },
+  {
+    "id": "kb-016",
+    "title": "What Happens After Account Deletion",
+    "category": "Account",
+    "tags": ["delete", "account", "data"],
+    "content": "After deletion, your data is permanently removed within 7 days. You can recover it during that window by logging in again.",
+    "url": "https://support.example.com/articles/account-deletion"
+  },
+  {
+    "id": "kb-017",
+    "title": "Getting Email Notifications",
+    "category": "Notifications",
+    "tags": ["email", "notifications", "alerts"],
+    "content": "Manage notifications in Settings > Notifications. You can choose which events trigger an email alert.",
+    "url": "https://support.example.com/articles/email-notifications"
+  },
+  {
+    "id": "kb-018",
+    "title": "Common Reasons for Login Failure",
+    "category": "Troubleshooting",
+    "tags": ["login", "error", "troubleshoot"],
+    "content": "Check if your password is correct, 2FA is working, and if your account is locked. Reset options are available.",
+    "url": "https://support.example.com/articles/login-troubleshooting"
+  },
+  {
+    "id": "kb-019",
+    "title": "How to Reassign a Project Owner",
+    "category": "Projects",
+    "tags": ["project", "owner", "permissions"],
+    "content": "In Project Settings > Permissions, select a new owner from your team and confirm the change.",
+    "url": "https://support.example.com/articles/reassign-owner"
+  },
+  {
+    "id": "kb-020",
+    "title": "How to Report a Bug",
+    "category": "Support",
+    "tags": ["bug", "issue", "report"],
+    "content": "Use the in-app feedback form or email support@example.com with a clear description, steps to reproduce, and screenshots.",
+    "url": "https://support.example.com/articles/report-bug"
+  }
+]
