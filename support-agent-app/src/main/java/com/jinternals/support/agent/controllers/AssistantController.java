@@ -6,6 +6,7 @@ import com.jinternals.support.agent.services.AssistantService;
 import io.modelcontextprotocol.spec.McpSchema;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 
 import java.util.Map;
 
@@ -16,8 +17,8 @@ public class AssistantController {
     private final AssistantService assistantService;
 
     @PostMapping("/ai/assistant/{conversationId}")
-    public Answer askQuestion(@PathVariable("conversationId") String conversationId,
-                              @RequestBody Question question) {
+    public Flux<String> askQuestion(@PathVariable("conversationId") String conversationId,
+                                    @RequestBody Question question) {
         return assistantService.getAnswer(conversationId, question);
     }
 

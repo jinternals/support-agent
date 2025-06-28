@@ -5,16 +5,12 @@
 
     <parent>
         <groupId>com.jinternals</groupId>
-        <artifactId>jinternals-support-agent</artifactId>
+        <artifactId>support-agent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.jinternals</groupId>
-    <artifactId>jinternals-support-mcp</artifactId>
+    <artifactId>support-mcp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
-    <name>jinternals-support-mcp</name>
-    <description>jinternals-support-mcp</description>
 
     <dependencies>
         <dependency>
@@ -38,6 +34,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
             </plugin>
         </plugins>
     </build>

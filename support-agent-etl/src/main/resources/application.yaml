@@ -1,0 +1,21 @@
+spring:
+  main:
+    web-application-type: none
+  ai:
+    ollama:
+      embedding:
+        model: mxbai-embed-large
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+        max-document-batch-size: 10000
+        initialize-schema: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/assistant
+    username: assistant
+    password: assistant
+
+logging.level.org.springframework.ai: DEBUG
+logging.level.io.modelcontextprotocol: DEBUG

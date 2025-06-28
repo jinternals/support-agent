@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring AI Ollama ChatClient Multimodal</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        #chat-container { border: 1px solid #ccc; padding: 15px; height: 400px; overflow-y: scroll; margin-bottom: 10px; background-color: #f9f9f9; }
+        .message { margin-bottom: 10px; padding: 8px; border-radius: 5px; }
+        .user-message { text-align: right; background-color: #e0f7fa; color: #00796b; margin-left: 20%; }
+        .ai-message { text-align: left; background-color: #e8f5e9; color: #2e7d32; margin-right: 20%; }
+        #input-form { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        #prompt-input { flex-grow: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+        #image-input { padding: 5px; }
+        #send-button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        #send-button:hover { background-color: #45a049; }
+        #model-select-label { display: block; margin-bottom: 5px; font-weight: bold; }
+        #model-select { padding: 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; margin-bottom: 15px; }
+        .input-group { display: flex; gap: 10px; width: 100%; }
+        .input-group button { white-space: nowrap; }
+    </style>
+</head>
+<body>
+<h1>Spring AI Ollama Multimodal ChatClient</h1>
+
+<div>
+    <label id="model-select-label" for="model-select">Select Model:</label>
+    <select id="model-select">
+        <option value="llama3">Llama 3 (Text Only)</option>
+        <option value="llava">LLaVA (Multimodal)</option>
+        <option value="deepseek-coder">DeepSeek Coder (Text Only)</option>
+    </select>
+</div>
+<br>
+
+<div id="chat-container"></div>
+
+<form id="input-form">
+    <input type="text" id="prompt-input" placeholder="Enter your message..." required>
+    <div class="input-group">
+        <input type="file" id="image-input" accept="image/*">
+        <button type="submit" id="send-button">Send</button>
+    </div>
+</form>
+
+<script>
+    const chatContainer = document.getElementById('chat-container');
+    const promptInput = document.getElementById('prompt-input');
+    const imageInput = document.getElementById('image-input');
+    const inputForm = document.getElementById('input-form');
+    const modelSelect = document.getElementById('model-select');
+
+    function appendMessage(sender, message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', sender + '-message');
+        messageDiv.innerText = message;
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    inputForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const prompt = promptInput.value;
+        const imageFile = imageInput.files[0];
+        const selectedModel = modelSelect.value;
+
+        if (!prompt) {
+            alert('Please enter a message.');
+            return;
+        }
+
+        appendMessage('user', prompt);
+        promptInput.value = '';
+        imageInput.value = ''; // Clear image input
+
+        let apiUrl = '';
+        let formData = new FormData();
+        formData.append('prompt', prompt);
+
+        if (selectedModel === 'llava' && imageFile) {
+            apiUrl = `/api/chat/multimodal/${selectedModel}`;
+            formData.append('image', imageFile);
+        } else if (selectedModel === 'llama3' || selectedModel === 'deepseek-coder') {
+            // For text-only models, use the text endpoint
+            apiUrl = `/api/chat/text/${selectedModel}?message=${encodeURIComponent(prompt)}`;
+            // For GET, formData is not directly used for the message param in the URL
+            // We'll use Fetch API with GET for text-only, and POST with FormData for multimodal
+        } else {
+            alert('Please select a valid model or provide an image for multimodal.');
+            return;
+        }
+
+        try {
+            let response;
+            if (selectedModel === 'llava' && imageFile) {
+                response = await fetch(apiUrl, {
+                    method: 'POST',
+                    body: formData
+                });
+            } else {
+                response = await fetch(apiUrl, {
+                    method: 'GET' // Text-only models can use GET for simplicity
+                });
+            }
+
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+            }
+
+            const data = await response.json();
+            appendMessage('ai', data.generation);
+        } catch (error) {
+            console.error('Error:', error);
+            appendMessage('ai', 'Error: Could not get a response from the AI. ' + error.message);
+        }
+    });
+</script>
+</body>
+</html>
