@@ -17,7 +17,7 @@ public class AssistantController {
     private final AssistantService assistantService;
 
     @PostMapping("/ai/assistant/{conversationId}")
-    public Flux<String> askQuestion(@PathVariable("conversationId") String conversationId,
+    public String askQuestion(@PathVariable("conversationId") String conversationId,
                                     @RequestBody Question question) {
         return assistantService.getAnswer(conversationId, question);
     }

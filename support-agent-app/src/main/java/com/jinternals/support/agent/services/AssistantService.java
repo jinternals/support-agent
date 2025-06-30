@@ -30,7 +30,7 @@ import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 public class AssistantService {
     private final ChatClient chatClient;
 
-    public Flux<String> getAnswer(String conversationId,  Question question) {
+    public String getAnswer(String conversationId,  Question question) {
 
         List<Message> messages = List.of(new UserMessage(question.question()));
 
@@ -40,8 +40,9 @@ public class AssistantService {
                 .system(sp -> sp.param("userId",  question.userId()))
                 .advisors(a -> a
                         .param(CONVERSATION_ID, conversationId)
-                        .param(FILTER_EXPRESSION, "client == 'xyz'"))
-                .stream().content();
+                        .param(FILTER_EXPRESSION, "client == 'client1'")
+                       )
+                .call().content();
     }
 
 //    void loadPrompt(String name) {

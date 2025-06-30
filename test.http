@@ -5,7 +5,7 @@ Content-Type: application/json
 
 {
   "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": "can you please tell me a 2000 word essay?"
+  "question": "I can’t log in even though my password and 2FA seem fine. Can you help?"
 }
 
 ###
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
   "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": "Schedule meeting with Details to watch movie : \n Title - Group Discussion - 2025-06-28T05:19:41Z \n Duration - 30 minutes \n Participants Ira"
+  "question": "Please create ticket with high priority.."
 
 }
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": " cancel Meeting with Ira"
+  "question": "Please give me list of my tickets"
 }
 
 ###

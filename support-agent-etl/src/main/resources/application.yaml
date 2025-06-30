@@ -2,9 +2,12 @@ spring:
   main:
     web-application-type: none
   ai:
-    ollama:
+    openai:
+      api-key: ${OPEN_API_KEY}
       embedding:
-        model: mxbai-embed-large
+        options:
+          model: text-embedding-3-small
+
     vectorstore:
       pgvector:
         index-type: HNSW
