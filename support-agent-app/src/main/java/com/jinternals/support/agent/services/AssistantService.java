@@ -28,35 +28,24 @@ import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 @AllArgsConstructor
 @Slf4j
 public class AssistantService {
+
     private final ChatClient chatClient;
 
-    public String getAnswer(String conversationId,  Question question) {
+    public Answer getAnswer(String conversationId,  Question question) {
 
         List<Message> messages = List.of(new UserMessage(question.question()));
 
         Prompt prompt = new Prompt(messages);
 
-        return this.chatClient.prompt(prompt)
+        String result = this.chatClient.prompt(prompt)
                 .system(sp -> sp.param("userId",  question.userId()))
                 .advisors(a -> a
                         .param(CONVERSATION_ID, conversationId)
                         .param(FILTER_EXPRESSION, "client == 'client1'")
                        )
                 .call().content();
+
+        return  new Answer(result);
     }
 
-//    void loadPrompt(String name) {
-//        McpSchema.GetPromptRequest r = new McpSchema.GetPromptRequest(name, Map.of());
-//        var client = mcpSyncClients.stream()
-//                .filter(c -> c.getServerInfo().name().equals("meeting-scheduler-mcp-server"))
-//                .findFirst();
-//        if (client.isPresent()) {
-//            var content = (McpSchema.TextContent) client.get()
-//                    .getPrompt(r)
-//                    .messages()
-//                    .getFirst()
-//                    .content();
-//            log.info("Prompt: {}", content.text());
-//        }
-//    }
 }
