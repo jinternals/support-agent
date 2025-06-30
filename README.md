@@ -1,5 +1,8 @@
 # 🧑‍💼 Support Agent
 
+> ⚠️ **Note:**This is subject to change as this is my learning project.
+
+
 This is a demo application that showcases capabilities such as **Retrieval-Augmented Generation (RAG)** and **Tool Calling** using **Spring AI MCP (Model Control Plane)**.
 
 ## 📦 Modules
@@ -68,5 +71,29 @@ Content-Type: application/json
 </details>
 
 ---
-
 > Built with [Spring AI](https://docs.spring.io/spring-ai/reference/) and powered by Open AI.
+
+
+---
+
+## ⚙️ How to Run
+
+### 🚀 Start database services
+
+```shell
+docker-compose up -d
+```
+
+### 🔐 Set OpenAI API Key (for local LLM fallback or remote OpenAI access)
+
+Add the following to your `~/.zshrc` (or `~/.bashrc` if you're using Bash):
+
+```shell
+export OPENAI_API_KEY=<your-key-here>
+```
+
+Then apply the changes:
+
+```shell
+source ~/.zshrc
+```
