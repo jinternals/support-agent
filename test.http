@@ -26,34 +26,3 @@ Content-Type: application/json
   "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
   "question": "Please give me list of my tickets"
 }
-
-###
-POST http://localhost:8080/ai/assistant/3
-Content-Type: application/json
-
-{
-  "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": "please suggest some Drama movies to watch with team"
-}
-
-
-
-
-###
-POST http://localhost:8080/ai/assistant/1
-Content-Type: application/json
-
-{
-  "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": "can you please cancel meeting with Ram"
-}
-
-
-###
-POST http://localhost:8080/ai/assistant/1
-Content-Type: application/json
-
-{
-  "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": "cancel meeting with id ae7654e3-8f10-4f86-93b9-bbd2376e350d"
-}
