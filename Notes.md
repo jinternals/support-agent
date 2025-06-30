@@ -78,8 +78,10 @@ Vector embedding is a way to represent complex data (like words, sentences, imag
 - https://docs.spring.io/spring-ai/reference/api/vectordbs/understand-vectordbs.html
 
 
-## Model Context Protocol (MCP) -
-https://modelcontextprotocol.io/introduction
+## Model Context Protocol (MCP)
+- https://docs.spring.io/spring-ai/reference/api/mcp/mcp-server-boot-starter-docs.html
+- https://docs.spring.io/spring-ai/reference/api/mcp/mcp-client-boot-starter-docs.html
+- https://modelcontextprotocol.io/introduction
 The Model Context Protocol (MCP) is a standardized protocol that enables AI models to interact with external tools
 and resources in a structured way. It supports multiple transport mechanisms to provide flexibility across different environments.
 
