@@ -39,6 +39,8 @@ text from books, articles, websites, and other sources to learn patterns, semant
 - Bias: Reflect biases in training data.
 - Context window: Limited to a fixed-size input sequence (e.g., 4k or 8k tokens).
 
+> https://docs.spring.io/spring-ai/reference/getting-started.html
+
 ## Retrieval Augmented Generation - Bringing Your Data to AI
 
 Retrieval Augmented Generation (RAG) is a technique useful to overcome the limitations of large language models that struggle with long-form content, factual accuracy, and context-awareness.
