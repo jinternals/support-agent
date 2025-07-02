@@ -18,7 +18,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class VectorDataLoaderService {
 
-    @Value("classpath:/data/kb-articles.json")
+    @Value("classpath:/documents/kb-articles.json")
     private Resource resource;
     private VectorStore vectorStore;
 
