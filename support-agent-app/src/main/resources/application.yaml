@@ -6,7 +6,7 @@ spring:
           jdbc:
             initialize-schema: always
     openai:
-      api-key: ${OPEN_API_KEY}
+      api-key: ${OPENAI_API_KEY}
       embedding:
         options:
           model: text-embedding-3-small
