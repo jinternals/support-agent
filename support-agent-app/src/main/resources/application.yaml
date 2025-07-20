@@ -23,12 +23,15 @@ spring:
 #      base-url: http://localhost:11434
     mcp:
       client:
+        enabled: true
+        version: 1.0.0
+        name: support-mcp-server
+        type: sync
         sse:
           connections:
-            server1:
+            supportMcpServer:
               url: http://localhost:8081
               sse-endpoint: /sse
-        enabled: true
     vectorstore:
       pgvector:
         index-type: HNSW
