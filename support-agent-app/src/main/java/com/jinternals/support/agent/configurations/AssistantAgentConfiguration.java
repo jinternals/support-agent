@@ -25,6 +25,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AssistantAgentConfiguration {
 
+    public static final int SIMPLE_LOGGER_ADVISOR_ORDER = 100;
     @Value("classpath:/prompts/system-prompt.txt")
     private Resource systemPromptResource;
 
@@ -53,7 +54,7 @@ public class AssistantAgentConfiguration {
 
     @Bean
     public SimpleLoggerAdvisor simpleLoggerAdvisor() {
-        return new SimpleLoggerAdvisor(100);
+        return new SimpleLoggerAdvisor(SIMPLE_LOGGER_ADVISOR_ORDER);
     }
 
     @Bean
@@ -68,8 +69,7 @@ public class AssistantAgentConfiguration {
 
     @Bean
     public QuestionAnswerAdvisor questionAnswerAdvisor(VectorStore vectorStore) {
-        QuestionAnswerAdvisor questionAnswerAdvisor = new QuestionAnswerAdvisor(vectorStore);
-        return questionAnswerAdvisor;
+        return new QuestionAnswerAdvisor(vectorStore);
     }
 
 }
