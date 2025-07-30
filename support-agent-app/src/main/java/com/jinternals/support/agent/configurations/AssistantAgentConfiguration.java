@@ -53,7 +53,7 @@ public class AssistantAgentConfiguration {
 
     @Bean
     public SimpleLoggerAdvisor simpleLoggerAdvisor() {
-        return new SimpleLoggerAdvisor();
+        return new SimpleLoggerAdvisor(100);
     }
 
     @Bean

@@ -31,7 +31,7 @@ public class AssistantService {
 
     private final ChatClient chatClient;
 
-    public Answer getAnswer(String conversationId,  Question question) {
+    public Answer getAnswer(String conversationId, Question question) {
 
         List<Message> messages = List.of(new UserMessage(question.question()));
 
@@ -42,10 +42,10 @@ public class AssistantService {
                 .advisors(a -> a
                         .param(CONVERSATION_ID, conversationId)
                         .param(FILTER_EXPRESSION, "client == 'client1'")
-                       )
+                )
                 .call().content();
 
-        return  new Answer(result);
+        return new Answer(result);
     }
 
 }

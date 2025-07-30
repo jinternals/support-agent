@@ -4,7 +4,7 @@ POST http://localhost:8080/ai/assistant/1
 Content-Type: application/json
 
 {
-  "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
+  "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece1",
   "question": "I can’t log in even though my password and 2FA seem fine. Can you help?"
 }
 
