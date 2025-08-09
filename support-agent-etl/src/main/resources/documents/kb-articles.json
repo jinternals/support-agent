@@ -1,6 +1,6 @@
 [
   {
-    "id": "kb-001",
+    "id": "b6d02c7b-5765-4dd7-aa38-2d8c5de6532c",
     "title": "How to Reset Your Password",
     "category": "Account",
     "tags": ["password", "reset", "login"],
@@ -8,7 +8,7 @@
     "url": "https://support.example.com/articles/reset-password"
   },
   {
-    "id": "kb-002",
+    "id": "0533ea4c-9e74-4909-bf2b-97d2e02bb0ed",
     "title": "How to Change Your Email Address",
     "category": "Account",
     "tags": ["email", "change", "account"],
@@ -16,7 +16,7 @@
     "url": "https://support.example.com/articles/change-email"
   },
   {
-    "id": "kb-003",
+    "id": "d274eef5-fecf-4097-bb38-c72307bf4b34",
     "title": "Enabling Two-Factor Authentication (2FA)",
     "category": "Security",
     "tags": ["2fa", "authentication", "security"],
@@ -24,7 +24,7 @@
     "url": "https://support.example.com/articles/enable-2fa"
   },
   {
-    "id": "kb-004",
+    "id": "294c401c-ba8a-453b-a6cd-f247278dc613",
     "title": "How to Cancel Your Subscription",
     "category": "Billing",
     "tags": ["cancel", "subscription", "billing"],
@@ -32,7 +32,7 @@
     "url": "https://support.example.com/articles/cancel-subscription"
   },
   {
-    "id": "kb-005",
+    "id": "2221ca65-174a-48a0-ae63-f7908413cc25",
     "title": "Troubleshooting 500 Internal Server Error",
     "category": "Troubleshooting",
     "tags": ["500", "server error"],
@@ -40,7 +40,7 @@
     "url": "https://support.example.com/articles/500-error"
   },
   {
-    "id": "kb-006",
+    "id": "6e73ec35-e29f-476d-a7b4-d45636932bd0",
     "title": "Understanding Your Invoice",
     "category": "Billing",
     "tags": ["invoice", "billing", "charges"],
@@ -48,7 +48,7 @@
     "url": "https://support.example.com/articles/invoice-guide"
   },
   {
-    "id": "kb-007",
+    "id": "ddc4e94d-8b8b-4489-b8bf-72f5a60e6c39",
     "title": "How to Upgrade Your Plan",
     "category": "Billing",
     "tags": ["upgrade", "plan", "billing"],
@@ -56,7 +56,7 @@
     "url": "https://support.example.com/articles/upgrade-plan"
   },
   {
-    "id": "kb-008",
+    "id": "1ee3cb70-6840-48aa-aefd-0ab1ce819770",
     "title": "How to Contact Support",
     "category": "Support",
     "tags": ["support", "help", "contact"],
@@ -64,7 +64,7 @@
     "url": "https://support.example.com/articles/contact-support"
   },
   {
-    "id": "kb-009",
+    "id": "2e0bbd4c-33a3-4798-8509-8293a4b86534",
     "title": "How to Download Your Data",
     "category": "Privacy",
     "tags": ["data", "download", "privacy"],
@@ -72,7 +72,7 @@
     "url": "https://support.example.com/articles/download-data"
   },
   {
-    "id": "kb-010",
+    "id": "46ce97b7-d830-49aa-9306-96d97e468ea0",
     "title": "Resetting 2FA When Locked Out",
     "category": "Security",
     "tags": ["2fa", "reset", "locked out"],
@@ -80,7 +80,7 @@
     "url": "https://support.example.com/articles/reset-2fa"
   },
   {
-    "id": "kb-011",
+    "id": "700fa693-63df-4ea6-8527-e459481ed4f3",
     "title": "How to Add Team Members",
     "category": "Teams",
     "tags": ["team", "invite", "users"],
@@ -88,7 +88,7 @@
     "url": "https://support.example.com/articles/add-team-members"
   },
   {
-    "id": "kb-012",
+    "id": "b1978f1f-3e2f-46d3-85fe-912352798cc6",
     "title": "Inviting External Collaborators",
     "category": "Teams",
     "tags": ["collaborators", "guest access"],
@@ -96,7 +96,7 @@
     "url": "https://support.example.com/articles/invite-collaborator"
   },
   {
-    "id": "kb-013",
+    "id": "04094288-3ea7-4efd-8d7f-9bf51a9a6829",
     "title": "Supported Payment Methods",
     "category": "Billing",
     "tags": ["payment", "card", "paypal"],
@@ -104,7 +104,7 @@
     "url": "https://support.example.com/articles/payment-methods"
   },
   {
-    "id": "kb-014",
+    "id": "c5197449-5619-4e4e-84d9-cd3a06c0c8ca",
     "title": "How to View Login History",
     "category": "Security",
     "tags": ["login", "history", "security"],
@@ -112,7 +112,7 @@
     "url": "https://support.example.com/articles/login-history"
   },
   {
-    "id": "kb-015",
+    "id": "41f79c86-a3c6-48dd-9576-8696da40c63c",
     "title": "Enabling Dark Mode",
     "category": "Preferences",
     "tags": ["theme", "dark mode", "settings"],
@@ -120,7 +120,7 @@
     "url": "https://support.example.com/articles/dark-mode"
   },
   {
-    "id": "kb-016",
+    "id": "56984e57-d3f9-42e8-b23f-02524097bfb7",
     "title": "What Happens After Account Deletion",
     "category": "Account",
     "tags": ["delete", "account", "data"],
@@ -128,7 +128,7 @@
     "url": "https://support.example.com/articles/account-deletion"
   },
   {
-    "id": "kb-017",
+    "id": "984081c9-be80-4afe-9798-dbdfe2241d72",
     "title": "Getting Email Notifications",
     "category": "Notifications",
     "tags": ["email", "notifications", "alerts"],
@@ -136,7 +136,7 @@
     "url": "https://support.example.com/articles/email-notifications"
   },
   {
-    "id": "kb-018",
+    "id": "49836ba2-b7fe-4e17-a2ba-8a5ef32d8921",
     "title": "Common Reasons for Login Failure",
     "category": "Troubleshooting",
     "tags": ["login", "error", "troubleshoot"],
@@ -144,7 +144,7 @@
     "url": "https://support.example.com/articles/login-troubleshooting"
   },
   {
-    "id": "kb-019",
+    "id": "308c140a-f2b7-489e-94d2-52634e8339f5",
     "title": "How to Reassign a Project Owner",
     "category": "Projects",
     "tags": ["project", "owner", "permissions"],
@@ -152,7 +152,7 @@
     "url": "https://support.example.com/articles/reassign-owner"
   },
   {
-    "id": "kb-020",
+    "id": "0272a9a0-bb32-4389-980c-ffade0694708",
     "title": "How to Report a Bug",
     "category": "Support",
     "tags": ["bug", "issue", "report"],

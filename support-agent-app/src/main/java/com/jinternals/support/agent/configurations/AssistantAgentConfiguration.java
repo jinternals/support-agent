@@ -1,18 +1,21 @@
 package com.jinternals.support.agent.configurations;
 
-import io.modelcontextprotocol.client.McpClient;
 import io.modelcontextprotocol.client.McpSyncClient;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
-import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
+import org.springframework.ai.chat.client.advisor.api.Advisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;
+import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
+import org.springframework.ai.rag.generation.augmentation.ContextualQueryAugmenter;
+import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,16 +41,17 @@ public class AssistantAgentConfiguration {
     public ChatClient chatClient(ChatClient.Builder builder,
                                  SimpleLoggerAdvisor simpleLoggerAdvisor,
                                  MessageChatMemoryAdvisor messageChatMemoryAdvisor,
-                                 QuestionAnswerAdvisor questionAnswerAdvisor
+                                 @Qualifier("retrievalAugmentationAdvisor")
+                                 Advisor retrievalAugmentationAdvisor
     ) {
 
         return builder
                 .defaultSystem(systemPromptResourceKb)
                 .defaultAdvisors(
                         messageChatMemoryAdvisor,
-                        questionAnswerAdvisor,
+                        retrievalAugmentationAdvisor,
                         simpleLoggerAdvisor
-                        )
+                )
                 .defaultToolCallbacks(new SyncMcpToolCallbackProvider(mcpSyncClients))
                 .build();
     }
@@ -67,9 +71,22 @@ public class AssistantAgentConfiguration {
         return MessageChatMemoryAdvisor.builder(chatMemory).build();
     }
 
-    @Bean
-    public QuestionAnswerAdvisor questionAnswerAdvisor(VectorStore vectorStore) {
-        return new QuestionAnswerAdvisor(vectorStore);
+    @Bean(name = "retrievalAugmentationAdvisor")
+    public Advisor retrievalAugmentationAdvisor(VectorStore vectorStore) {
+        var contextualQueryAugmenter = ContextualQueryAugmenter.builder()
+                .allowEmptyContext(false)
+                .build();
+
+        var vectorStoreDocumentRetriever = VectorStoreDocumentRetriever.builder()
+                .vectorStore(vectorStore)
+                .similarityThreshold(0.75)
+                .topK(8)
+                .build();
+
+        return RetrievalAugmentationAdvisor.builder()
+                .documentRetriever(vectorStoreDocumentRetriever)
+                .queryAugmenter(contextualQueryAugmenter)
+                .build();
     }
 
 }

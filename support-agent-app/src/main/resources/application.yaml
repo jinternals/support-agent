@@ -5,22 +5,26 @@ spring:
         repository:
           jdbc:
             initialize-schema: always
-    openai:
-      api-key: ${OPENAI_API_KEY}
+    ollama:
+      base-url: http://localhost:11434
+      init:
+        pull-model-strategy: when_missing
+        timeout: 10m
+        max-retries: 2
       embedding:
-        options:
-          model: text-embedding-3-small
+        model: mxbai-embed-large:latest
       chat:
+        model: Mradul/gemma3-tools:27b
         options:
-          model: gpt-4
+          temperature: 0.6
+    vectorstore:
+      qdrant:
 
-
-    #    ollama:
-#      embedding:
-#        model: mxbai-embed-large
-#      chat:
-#        model: llama3.2
-#      base-url: http://localhost:11434
+        host: localhost
+        port: 6334
+        collection-name: support
+        use-tls: false
+        initialize-schema: true
     mcp:
       client:
         enabled: true
@@ -32,13 +36,6 @@ spring:
             supportMcpServer:
               url: http://localhost:8081
               sse-endpoint: /sse
-    vectorstore:
-      pgvector:
-        index-type: HNSW
-        distance-type: COSINE_DISTANCE
-        dimensions: 1536
-        max-document-batch-size: 10000
-        initialize-schema: true
   datasource:
     url: jdbc:postgresql://localhost:5432/assistant
     username: assistant

@@ -1,5 +1,6 @@
 
 ###
+# @timeout 5m
 POST http://localhost:8080/ai/assistant/1
 Content-Type: application/json
 
@@ -9,20 +10,22 @@ Content-Type: application/json
 }
 
 ###
+# @timeout 5m
 POST http://localhost:8080/ai/assistant/1
 Content-Type: application/json
 
 {
   "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": "Please create ticket with high priority.."
+  "question": "My account seems hacked, i lost access, please create high priority ticket"
 
 }
 
 ###
+# @timeout 5m
 POST http://localhost:8080/ai/assistant/1
 Content-Type: application/json
 
 {
   "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": "Please give me list of my tickets"
+  "question": "Yes"
 }

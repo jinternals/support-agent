@@ -41,7 +41,7 @@ public class AssistantService {
                 .system(sp -> sp.param("userId",  question.userId()))
                 .advisors(a -> a
                         .param(CONVERSATION_ID, conversationId)
-                        .param(FILTER_EXPRESSION, "client == 'client1'")
+                        .param(FILTER_EXPRESSION, "context == 'support'")
                 )
                 .call().content();
 
