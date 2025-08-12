@@ -65,11 +65,11 @@ Vector embedding is a way to represent complex data (like words, sentences, imag
 #### Why Use Embeddings?
 - Computers can't understand raw text or images directly.
 - Embeddings turn those into numeric form that can be used for:
-- Searching (semantic search)
-- Recommendation systems
-- Clustering/similarity
-- Input to machine learning models
-- Retrieval-Augmented Generation (RAG) in LLMs
+    - Searching (semantic search)
+    - Recommendation systems
+    - Clustering/similarity
+    - Input to machine learning models
+    - Retrieval-Augmented Generation (RAG) in LLMs
 
 ![vector.png](../docs/vector.png)
 
@@ -82,11 +82,12 @@ Vector embedding is a way to represent complex data (like words, sentences, imag
 
 
 ## Model Context Protocol (MCP)
-- https://docs.spring.io/spring-ai/reference/api/mcp/mcp-server-boot-starter-docs.html
-- https://docs.spring.io/spring-ai/reference/api/mcp/mcp-client-boot-starter-docs.html
-- https://modelcontextprotocol.io/introduction
 The Model Context Protocol (MCP) is a standardized protocol that enables AI models to interact with external tools
 and resources in a structured way. It supports multiple transport mechanisms to provide flexibility across different environments.
+
+- https://modelcontextprotocol.io/introduction
+- https://docs.spring.io/spring-ai/reference/api/mcp/mcp-server-boot-starter-docs.html
+- https://docs.spring.io/spring-ai/reference/api/mcp/mcp-client-boot-starter-docs.html
 
 ![mcp.png](../docs/mcp.png)
 
