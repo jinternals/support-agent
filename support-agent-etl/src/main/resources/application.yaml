@@ -1,24 +1,26 @@
 spring:
-  main:
-    web-application-type: none
-  ai:
-    openai:
-      api-key: ${OPENAI_API_KEY}
-      embedding:
-        options:
-          model: text-embedding-3-small
-
-    vectorstore:
-      pgvector:
-        index-type: HNSW
-        distance-type: COSINE_DISTANCE
-        dimensions: 1536
-        max-document-batch-size: 10000
-        initialize-schema: true
-  datasource:
-    url: jdbc:postgresql://localhost:5432/assistant
-    username: assistant
-    password: assistant
+    main:
+      web-application-type: none
+    ai:
+      ollama:
+        base-url: http://localhost:11434
+        init:
+          pull-model-strategy: when_missing
+          timeout: 10m
+          max-retries: 2
+        embedding:
+          model: mxbai-embed-large:latest
+        chat:
+          model: Mradul/gemma3-tools:27b
+          options:
+            temperature: 0.6
+      vectorstore:
+        qdrant:
+          host: localhost
+          port: 6334
+          collection-name: support
+          use-tls: false
+          initialize-schema: true
 
 logging.level.org.springframework.ai: DEBUG
 logging.level.io.modelcontextprotocol: DEBUG

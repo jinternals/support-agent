@@ -46,10 +46,10 @@ text from books, articles, websites, and other sources to learn patterns, semant
 Retrieval Augmented Generation (RAG) is a technique useful to overcome the limitations of large language models that struggle with long-form content, factual accuracy, and context-awareness.
 
 ### RAG Architecture
-![rag.png](docs/rag.png)
+![rag.png](../docs/rag.png)
 
 ### RAG Architecture - ETL
-![rag-etl.png](docs/rag-etl.png)
+![rag-etl.png](../docs/rag-etl.png)
 
 
 | Problem (without RAG)        | How RAG Helps                        |
@@ -70,13 +70,13 @@ Vector embedding is a way to represent complex data (like words, sentences, imag
 - Input to machine learning models
 - Retrieval-Augmented Generation (RAG) in LLMs
 
-![vector.png](docs/vector.png)
+![vector.png](../docs/vector.png)
 
-![vector-search.png](docs/vector-search.png)
+![vector-search.png](../docs/vector-search.png)
 
 #### Similarity
 - Several mathematical formulas can be used to determine if two vectors are similar. One of the most intuitive to visualize and understand is cosine similarity. Consider the following images that show three sets of graphs:
-  ![similarity.png](docs/similarity.png)
+  ![similarity.png](../docs/similarity.png)
 - https://docs.spring.io/spring-ai/reference/api/vectordbs/understand-vectordbs.html
 
 
@@ -87,4 +87,17 @@ Vector embedding is a way to represent complex data (like words, sentences, imag
 The Model Context Protocol (MCP) is a standardized protocol that enables AI models to interact with external tools
 and resources in a structured way. It supports multiple transport mechanisms to provide flexibility across different environments.
 
-![mcp.png](docs/mcp.png)
+![mcp.png](../docs/mcp.png)
+
+---
+
+### Semantic search vs Embeddings
+###  **Semantic search**
+Semantic search refers to the process of retrieving information based on the meaning of
+a query, rather than relying solely on keyword matching. Semantic search is the retrieval strategy.
+
+### **Embeddings**
+Embeddings are numerical representations of a text that capture semantic relationships, enabling
+algorithms to compare and match content based on similarity. Embeddings are the data format that
+makes semantic search efficient.
+
