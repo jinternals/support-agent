@@ -90,7 +90,7 @@ Content-Type: application/json
 </details>
 
 ---
-> Built with [Spring AI](https://docs.spring.io/spring-ai/reference/) and powered by Open AI.
+> Built with [Spring AI](https://docs.spring.io/spring-ai/reference/) and powered by Local running LLM.
 
 
 ---
