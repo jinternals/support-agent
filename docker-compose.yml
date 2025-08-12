@@ -35,3 +35,11 @@ services:
       - "3000:8080"
     volumes:
       - ./data/open-webui:/app/backend/data
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./data/ollama:/root/.ollama
