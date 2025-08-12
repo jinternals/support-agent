@@ -5,7 +5,7 @@
 
 ### Spring AI:
 - https://docs.spring.io/spring-ai/reference/index.html
-- [https://tesco.udemy.com/course/spring-ai-beginner-to-guru/](https://www.udemy.com/course/spring-ai-beginner-to-guru/)
+- [https://www.udemy.com/course/spring-ai-beginner-to-guru/](https://www.udemy.com/course/spring-ai-beginner-to-guru/)
 
 ### Vector
 
