@@ -12,7 +12,8 @@ text from books, articles, websites, and other sources to learn patterns, semant
 ### 2. How LLMs Work Internally
 #### a) Architecture: Transformer
 - Modern LLMs are mostly based on the Transformer architecture (introduced in 2017 by Ashish Vaswani and his colleagues at Google).
-    - Paper "Attention is All You Need".https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf
+    - Paper "Attention is All You Need".
+    - https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf
 - Transformers use self-attention mechanisms to weigh the importance of every word in the input relative to every other word.
 - This enables the model to understand context deeply and handle long-range dependencies in text.
 
