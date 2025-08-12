@@ -1,6 +1,6 @@
 # 🧑‍💼 Support Agent
 
-> ⚠️ **Note:**This repository is subject to change as this is my learning project.
+> ⚠️ **Note:** This repository is subject to change as this is my learning project.
 
 
 This is a demo application that showcases capabilities such as **Retrieval-Augmented Generation (RAG)** and **Tool Calling** using **Spring AI MCP (Model Context Protocol)**.
