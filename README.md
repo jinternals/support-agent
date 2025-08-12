@@ -103,7 +103,7 @@ Content-Type: application/json
 docker-compose up -d
 ```
 
-### 🔐 Set OpenAI API Key:
+### 🔐 Set OpenAI API Key: [This is only requred if LLM is OpenAI provided]
 
 Add the following to your `~/.zshrc` (or `~/.bashrc` if you're using Bash):
 
