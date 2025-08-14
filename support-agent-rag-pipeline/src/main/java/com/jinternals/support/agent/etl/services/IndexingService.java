@@ -1,5 +1,6 @@
 package com.jinternals.support.agent.etl.services;
 
+import com.jinternals.support.agent.etl.Constants;
 import com.jinternals.support.agent.etl.entities.VectorDocument;
 import com.jinternals.support.agent.etl.repositories.VectorDocumentRepository;
 import com.jinternals.support.agent.etl.utils.HashUtils;
@@ -18,9 +19,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static com.jinternals.support.agent.etl.Constants.KEY_SOURCE_PATH;
 import static org.springframework.core.io.UrlResource.from;
 import static org.springframework.util.Assert.isTrue;
 import static org.springframework.util.Assert.notNull;
+import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Slf4j
 @Service
@@ -40,13 +43,14 @@ public class IndexingService {
         return processDocument(from(sourcePath), keywords, reIndex);
     }
 
-    private void addCustomMetadata(Document document, List<String> keywords) {
-        if (CollectionUtils.isEmpty(keywords)) {
-            return;
-        }
+    private void addCustomMetadata(Document document, String sourcePath, List<String> keywords) {
         notNull(document, "Document must not be null");
 
-        document.getMetadata().putAll(Map.of(CUSTOM_KEYWORDS_METADATA_KEY, keywords));
+        document.getMetadata().put(KEY_SOURCE_PATH, sourcePath);
+
+        if (!isEmpty(keywords)) {
+            document.getMetadata().putAll(Map.of(CUSTOM_KEYWORDS_METADATA_KEY, keywords));
+        }
     }
 
 
@@ -63,21 +67,25 @@ public class IndexingService {
             return List.of();
         }
 
+        if(reIndex) {
+            log.info("Deleting existing index for document: {}", sourcePath);
+            documentWriter.delete(sourcePath);
+        }
+
         var vectorDocument = existingVectorDocument.orElse(VectorDocument.builder()
                 .sourcePath(sourcePath)
                 .hash(resourceHash)
                 .build());
 
+
         var parsedDocuments = documentReader.readFrom(resource);
         var chunkedDocuments = textSplitter.split(parsedDocuments);
 
-        chunkedDocuments.forEach(doc -> addCustomMetadata(doc, keywords));
+        chunkedDocuments.forEach(doc -> addCustomMetadata(doc, sourcePath, keywords));
 
-
-        documentWriter.write(parsedDocuments);
         documentWriter.write(chunkedDocuments);
 
-
+        vectorDocument.setHash(resourceHash);
         vectorDocumentRepository.save(vectorDocument);
 
         return chunkedDocuments;

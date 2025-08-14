@@ -7,11 +7,13 @@ import com.jinternals.support.agent.etl.workflow.activities.dto.IndexingActivity
 import com.jinternals.support.agent.etl.workflow.activities.dto.IndexingActivityOutput;
 import io.temporal.spring.boot.ActivityImpl;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 @ActivityImpl(taskQueues = TaskQueue.INDEXING_TASK_QUEUE)
@@ -30,6 +32,7 @@ public class IndexingActivityImpl implements IndexingActivity {
             return new IndexingActivityOutput(indexingActivityInput.sourcePath(), chunkIds, "Indexed successfully.");
 
         } catch (Exception e) {
+            log.error("Indexing failed", e);
             throw new RuntimeException("Indexing failed");
         }
 
