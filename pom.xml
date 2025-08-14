@@ -15,16 +15,19 @@
         <spring-ai.version>1.0.0</spring-ai.version>
         <spring.boot.version>3.5.0</spring.boot.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <grpc.version>1.65.1</grpc.version>
     </properties>
 
     <modules>
         <module>support-mcp</module>
         <module>support-agent-app</module>
         <module>support-agent-etl</module>
+        <module>support-agent-rag-pipeline</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -40,6 +43,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-bom</artifactId>
+                <version>${grpc.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

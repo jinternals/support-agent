@@ -29,9 +29,6 @@ import java.util.List;
 public class AssistantAgentConfiguration {
 
     public static final int SIMPLE_LOGGER_ADVISOR_ORDER = 100;
-    @Value("classpath:/prompts/system-prompt.txt")
-    private Resource systemPromptResource;
-
     @Value("classpath:/prompts/system-prompt-kb.txt")
     private Resource systemPromptResourceKb;
 

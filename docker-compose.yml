@@ -1,7 +1,7 @@
 services:
   postgres:
     image: ankane/pgvector
-    container_name: my_postgres
+    container_name: postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: assistant
@@ -11,6 +11,8 @@ services:
       - "5432:5432"
     volumes:
       - ./data/pgdata:/var/lib/postgresql/data
+    networks:
+      - support_agent
 
   qdrant:
     image: qdrant/qdrant:v1.12.4
@@ -26,6 +28,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - support_agent
 
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
@@ -35,6 +39,8 @@ services:
       - "3000:8080"
     volumes:
       - ./data/open-webui:/app/backend/data
+    networks:
+      - support_agent
 
   ollama:
     image: ollama/ollama:latest
@@ -43,3 +49,10 @@ services:
       - "11434:11434"
     volumes:
       - ./data/ollama:/root/.ollama
+    networks:
+      - support_agent
+
+networks:
+  support_agent:
+    name: support_agent
+    driver: bridge
