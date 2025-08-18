@@ -4,6 +4,7 @@ import com.jinternals.support.agent.etl.entities.VectorDocument;
 import com.jinternals.support.agent.etl.repositories.VectorDocumentRepository;
 import com.jinternals.support.agent.etl.services.readers.DocumentReader;
 import com.jinternals.support.agent.etl.services.tranformers.DocumentTransformerService;
+import com.jinternals.support.agent.etl.services.writers.DocumentWriterService;
 import com.jinternals.support.agent.etl.utils.HashUtils;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.jinternals.support.agent.etl.services.Constants.KEY_SOURCE_PATH;
+import static com.jinternals.support.agent.etl.constants.Constants.KEY_SOURCE_PATH;
 import static org.springframework.core.io.UrlResource.from;
 import static org.springframework.util.Assert.isTrue;
 import static org.springframework.util.Assert.notNull;
@@ -32,7 +33,7 @@ public class IndexingService {
 
     private VectorDocumentRepository vectorDocumentRepository;
     private DocumentReader documentReader;
-    private DocumentWriter documentWriter;
+    private DocumentWriterService documentWriterService;
     private DocumentTransformerService documentTransformerService;
 
     @Transactional
@@ -67,7 +68,7 @@ public class IndexingService {
 
         if(reIndex) {
             log.info("Deleting existing index for document: {}", sourcePath);
-            documentWriter.delete(sourcePath);
+            documentWriterService.delete(sourcePath);
         }
 
         var vectorDocument = existingVectorDocument.orElse(VectorDocument.builder()
@@ -80,7 +81,7 @@ public class IndexingService {
 
         chunkedDocuments.forEach(doc -> addCustomMetadata(doc, sourcePath, keywords));
 
-        documentWriter.write(chunkedDocuments);
+        documentWriterService.write(chunkedDocuments);
 
         vectorDocument.setHash(resourceHash);
         vectorDocumentRepository.save(vectorDocument);

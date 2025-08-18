@@ -1,4 +1,4 @@
-package com.jinternals.support.agent.etl.services;
+package com.jinternals.support.agent.etl.constants;
 
 import lombok.experimental.UtilityClass;
 
