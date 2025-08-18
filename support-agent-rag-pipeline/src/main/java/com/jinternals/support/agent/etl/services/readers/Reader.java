@@ -5,7 +5,7 @@ import org.springframework.core.io.Resource;
 
 import java.util.List;
 
-public interface ReaderStrategy {
+public interface Reader {
     boolean supports(String extension, String contentType);
     List<Document> read(Resource resource);
 }

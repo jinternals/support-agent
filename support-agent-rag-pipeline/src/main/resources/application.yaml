@@ -17,7 +17,7 @@ spring:
         timeout: 10m
         max-retries: 2
       embedding:
-        model: mxbai-embed-large:latest
+        model: dengcao/Qwen3-Embedding-8B:Q8_0
       chat:
         model: Mradul/gemma3-tools:27b
         options:

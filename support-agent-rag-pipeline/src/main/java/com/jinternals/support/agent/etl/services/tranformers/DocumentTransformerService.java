@@ -1,4 +1,4 @@
-package com.jinternals.support.agent.etl.services;
+package com.jinternals.support.agent.etl.services.tranformers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;

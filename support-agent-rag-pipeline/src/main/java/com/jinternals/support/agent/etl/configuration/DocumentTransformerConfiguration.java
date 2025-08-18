@@ -1,6 +1,6 @@
 package com.jinternals.support.agent.etl.configuration;
 
-import com.jinternals.support.agent.etl.services.tranformers.LowercaseKeywordsTransformer;
+import com.jinternals.support.agent.etl.services.tranformers.impl.LowercaseKeywordsTransformer;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.model.transformer.KeywordMetadataEnricher;
 import org.springframework.ai.transformer.splitter.TextSplitter;

@@ -1,10 +1,8 @@
-package com.jinternals.support.agent.etl.services.tranformers;
+package com.jinternals.support.agent.etl.services.tranformers.impl;
 
 
 import org.springframework.ai.document.Document;
 import org.springframework.ai.document.DocumentTransformer;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.stream.Collectors;

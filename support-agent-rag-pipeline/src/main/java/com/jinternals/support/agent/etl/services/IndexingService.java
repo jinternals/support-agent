@@ -2,14 +2,14 @@ package com.jinternals.support.agent.etl.services;
 
 import com.jinternals.support.agent.etl.entities.VectorDocument;
 import com.jinternals.support.agent.etl.repositories.VectorDocumentRepository;
+import com.jinternals.support.agent.etl.services.readers.DocumentReader;
+import com.jinternals.support.agent.etl.services.tranformers.DocumentTransformerService;
 import com.jinternals.support.agent.etl.utils.HashUtils;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.document.DocumentTransformer;
-import org.springframework.ai.transformer.splitter.TextSplitter;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 

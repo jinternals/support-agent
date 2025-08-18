@@ -1,29 +1,20 @@
-package com.jinternals.support.agent.etl.services;
+package com.jinternals.support.agent.etl.services.readers;
 
-import com.jinternals.support.agent.etl.services.readers.ReaderStrategy;
 import com.jinternals.support.agent.etl.services.readers.impl.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.reader.tika.TikaDocumentReader;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 
 import java.net.URLConnection;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.apache.commons.io.FilenameUtils.getExtension;
 
 @Service
+@RequiredArgsConstructor
 public class DocumentReader {
-
-    private final List<ReaderStrategy> strategies = Arrays.asList(
-            new PdfReaderStrategy(),
-            new MarkdownReaderStrategy(),
-            new HtmlReaderStrategy(),
-            new JsonReaderStrategy(),
-            new XmlReaderStrategy()
-    );
+    private final List<Reader> readers;
 
     public List<Document> readFrom(Resource resource) {
         try {
@@ -31,10 +22,10 @@ public class DocumentReader {
             String ext = getExtension(filename);
             String contentType = detectContentType(resource);
 
-            return strategies.stream()
+            return readers.stream()
                     .filter(s -> s.supports(ext, contentType))
                     .findFirst()
-                    .orElse(new TikaFallbackReaderStrategy())
+                    .orElse(new TikaFallbackReader())
                     .read(resource);
 
         } catch (Exception e) {
