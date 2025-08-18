@@ -18,7 +18,7 @@ public class TikaFallbackReaderStrategy implements ReaderStrategy {
 
     @Override
     public List<Document> read(Resource resource) {
-
+        log.info("Start extracting document using fallback reader from {}", resource);
         return new TikaDocumentReader(resource).get();
     }
 }

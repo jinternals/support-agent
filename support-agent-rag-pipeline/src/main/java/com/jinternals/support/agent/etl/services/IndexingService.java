@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.document.DocumentTransformer;
 import org.springframework.ai.transformer.splitter.TextSplitter;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class IndexingService {
     private VectorDocumentRepository vectorDocumentRepository;
     private DocumentReader documentReader;
     private DocumentWriter documentWriter;
-    private TextSplitter textSplitter;
+    private DocumentTransformerService documentTransformerService;
 
     @Transactional
     public List<Document> indexDocumentFromURL(String sourcePath, List<String> keywords, boolean reIndex) {
@@ -74,9 +75,8 @@ public class IndexingService {
                 .hash(resourceHash)
                 .build());
 
-
         var parsedDocuments = documentReader.readFrom(resource);
-        var chunkedDocuments = textSplitter.split(parsedDocuments);
+        var chunkedDocuments = documentTransformerService.transform(parsedDocuments);
 
         chunkedDocuments.forEach(doc -> addCustomMetadata(doc, sourcePath, keywords));
 
