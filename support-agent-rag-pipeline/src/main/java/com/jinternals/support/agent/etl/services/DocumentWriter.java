@@ -1,11 +1,9 @@
 package com.jinternals.support.agent.etl.services;
 
-import com.jinternals.support.agent.etl.Constants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
-import org.springframework.ai.vectorstore.filter.Filter;
 import org.springframework.ai.vectorstore.filter.Filter.Expression;
 import org.springframework.ai.vectorstore.filter.Filter.Key;
 import org.springframework.ai.vectorstore.filter.Filter.Value;
@@ -13,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.jinternals.support.agent.etl.Constants.KEY_SOURCE_PATH;
+import static com.jinternals.support.agent.etl.services.Constants.KEY_SOURCE_PATH;
 import static org.springframework.ai.vectorstore.filter.Filter.ExpressionType.*;
 
 @Slf4j

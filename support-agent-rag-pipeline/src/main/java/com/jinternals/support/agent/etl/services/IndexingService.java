@@ -1,6 +1,5 @@
 package com.jinternals.support.agent.etl.services;
 
-import com.jinternals.support.agent.etl.Constants;
 import com.jinternals.support.agent.etl.entities.VectorDocument;
 import com.jinternals.support.agent.etl.repositories.VectorDocumentRepository;
 import com.jinternals.support.agent.etl.utils.HashUtils;
@@ -12,14 +11,12 @@ import org.springframework.ai.document.Document;
 import org.springframework.ai.transformer.splitter.TextSplitter;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.jinternals.support.agent.etl.Constants.KEY_SOURCE_PATH;
+import static com.jinternals.support.agent.etl.services.Constants.KEY_SOURCE_PATH;
 import static org.springframework.core.io.UrlResource.from;
 import static org.springframework.util.Assert.isTrue;
 import static org.springframework.util.Assert.notNull;

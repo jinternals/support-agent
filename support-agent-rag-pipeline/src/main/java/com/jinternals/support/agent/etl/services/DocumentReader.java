@@ -19,6 +19,7 @@ public class DocumentReader {
 
     private final List<ReaderStrategy> strategies = Arrays.asList(
             new PdfReaderStrategy(),
+            new MarkdownReaderStrategy(),
             new HtmlReaderStrategy(),
             new JsonReaderStrategy(),
             new XmlReaderStrategy()

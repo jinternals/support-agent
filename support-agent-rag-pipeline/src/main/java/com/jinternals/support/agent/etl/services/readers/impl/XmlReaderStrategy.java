@@ -1,12 +1,14 @@
 package com.jinternals.support.agent.etl.services.readers.impl;
 
 import com.jinternals.support.agent.etl.services.readers.ReaderStrategy;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.tika.TikaDocumentReader;
 import org.springframework.core.io.Resource;
 
 import java.util.List;
 
+@Slf4j
 public class XmlReaderStrategy implements ReaderStrategy {
 
     @Override
@@ -17,6 +19,7 @@ public class XmlReaderStrategy implements ReaderStrategy {
 
     @Override
     public List<Document> read(Resource resource) {
+        log.info("Start extracting xml document from {}", resource);
         return new TikaDocumentReader(resource).get();
     }
 }
