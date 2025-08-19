@@ -1,10 +1,15 @@
+server:
+  port: 8082
 spring:
+  jackson:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  data:
+      repositories:
+        enabled: true
+        bootstrap-mode: default
   ai:
-    chat:
-      memory:
-        repository:
-          jdbc:
-            initialize-schema: always
     ollama:
       base-url: http://localhost:11434
       init:
@@ -19,27 +24,21 @@ spring:
           temperature: 0.6
     vectorstore:
       qdrant:
-
         host: localhost
         port: 6334
         collection-name: support
         use-tls: false
         initialize-schema: true
-    mcp:
-      client:
-        enabled: true
-        version: 1.0.0
-        name: support-mcp-server
-        type: sync
-        sse:
-          connections:
-            supportMcpServer:
-              url: http://localhost:8081
-              sse-endpoint: /sse
   datasource:
     url: jdbc:postgresql://localhost:5432/assistant
     username: assistant
     password: assistant
+  temporal:
+    namespace: default
+    connection:
+      target: localhost:7233
+    workers-auto-discovery:
+      packages: com.jinternals.support.agent.etl
 
 logging.level.org.springframework.ai: DEBUG
 logging.level.io.modelcontextprotocol: DEBUG
