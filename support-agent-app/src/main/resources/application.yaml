@@ -1,4 +1,7 @@
 spring:
+  threads:
+    virtual:
+      enabled: true
   ai:
     chat:
       memory:
@@ -14,12 +17,11 @@ spring:
       embedding:
         model: dengcao/Qwen3-Embedding-8B:Q8_0
       chat:
-        model: Mradul/gemma3-tools:27b
+        model: qwen3:8b
         options:
-          temperature: 0.6
+          temperature: 0.1
     vectorstore:
       qdrant:
-
         host: localhost
         port: 6334
         collection-name: support

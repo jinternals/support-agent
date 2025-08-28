@@ -1,4 +1,4 @@
-package com.jinternals.support.agent.etl.workflow.activities.dto;
+package com.jinternals.support.agent.etl.workflow.indexing.activities.dto;
 
 import java.util.List;
 

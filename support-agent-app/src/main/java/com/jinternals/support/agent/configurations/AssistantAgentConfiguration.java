@@ -76,7 +76,7 @@ public class AssistantAgentConfiguration {
 
         var vectorStoreDocumentRetriever = VectorStoreDocumentRetriever.builder()
                 .vectorStore(vectorStore)
-                .similarityThreshold(0.75)
+                .similarityThreshold(0.4)
                 .topK(8)
                 .build();
 

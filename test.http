@@ -16,7 +16,7 @@ Content-Type: application/json
 
 {
   "userId": "e85c20f0-ad28-4531-9ac4-158b9b4a3ece",
-  "question": "My account seems hacked, i lost access, please create high priority ticket"
+  "question": "My account seems hacked, please create high priority support ticket"
 
 }
 
