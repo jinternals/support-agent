@@ -29,39 +29,37 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 @AllArgsConstructor
 public class IndexingService {
 
-    private static final String CUSTOM_KEYWORDS_METADATA_KEY = "custom_keywords";
-
     private VectorDocumentRepository vectorDocumentRepository;
     private DocumentReader documentReader;
     private DocumentWriterService documentWriterService;
     private DocumentTransformerService documentTransformerService;
 
     @Transactional
-    public List<Document> indexDocumentFromURL(String sourcePath, List<String> keywords, boolean reIndex) {
-        log.info("Indexing document from URL: {} and {}", sourcePath, keywords);
-        return processDocument(from(sourcePath), keywords, reIndex);
+    public List<Document> indexDocumentFromURL(String sourcePath, Map<String,String> metadata, boolean reIndex) {
+        log.info("Indexing document from URL: {} and {}", sourcePath, metadata);
+        return processDocument(from(sourcePath), metadata, reIndex);
     }
 
-    private void addCustomMetadata(Document document, String sourcePath, List<String> keywords) {
+    private void addCustomMetadata(Document document, String sourcePath, Map<String,String> metadata) {
         notNull(document, "Document must not be null");
 
         document.getMetadata().put(KEY_SOURCE_PATH, sourcePath);
 
-        if (!isEmpty(keywords)) {
-            document.getMetadata().putAll(Map.of(CUSTOM_KEYWORDS_METADATA_KEY, keywords));
+        if (!isEmpty(metadata)) {
+            document.getMetadata().putAll(metadata);
         }
     }
 
 
     @SneakyThrows
-    private List<Document> processDocument(Resource resource, List<String> keywords, boolean reIndex) {
+    private List<Document> processDocument(Resource resource, Map<String,String> metadata, boolean reIndex) {
         isTrue(resource != null && resource.exists(), "Resource must not be null and must exist");
 
         var sourcePath = resource.getURI().toString();
         var existingVectorDocument = vectorDocumentRepository.findBySourcePath(sourcePath);
         var resourceHash = HashUtils.calculateHash(resource);
 
-        if(isDocumentAlreadIndexed(existingVectorDocument, resourceHash) && !reIndex) {
+        if(isDocumentAlreadyIndexed(existingVectorDocument, resourceHash) && !reIndex) {
             log.info("Document already indexed, skipping indexing");
             return List.of();
         }
@@ -79,7 +77,7 @@ public class IndexingService {
         var parsedDocuments = documentReader.readFrom(resource);
         var chunkedDocuments = documentTransformerService.transform(parsedDocuments);
 
-        chunkedDocuments.forEach(doc -> addCustomMetadata(doc, sourcePath, keywords));
+        chunkedDocuments.forEach(doc -> addCustomMetadata(doc, sourcePath, metadata));
 
         documentWriterService.write(chunkedDocuments);
 
@@ -89,7 +87,7 @@ public class IndexingService {
         return chunkedDocuments;
     }
 
-    private static boolean isDocumentAlreadIndexed(Optional<VectorDocument> existingFromDb, String resourceHash) {
+    private static boolean isDocumentAlreadyIndexed(Optional<VectorDocument> existingFromDb, String resourceHash) {
         return existingFromDb.isPresent() && resourceHash.equals(existingFromDb.get().getHash());
     }
 

@@ -1,6 +1,9 @@
 server:
   port: 8082
 spring:
+  threads:
+    virtual:
+      enabled: true
   jackson:
   jpa:
     hibernate:
@@ -18,10 +21,12 @@ spring:
         max-retries: 2
       embedding:
         model: dengcao/Qwen3-Embedding-8B:Q8_0
-      chat:
-        model: Mradul/gemma3-tools:27b
         options:
-          temperature: 0.6
+          temperature: 0.1
+      chat:
+        model: qwen3:8b
+        options:
+          temperature: 0.1
     vectorstore:
       qdrant:
         host: localhost

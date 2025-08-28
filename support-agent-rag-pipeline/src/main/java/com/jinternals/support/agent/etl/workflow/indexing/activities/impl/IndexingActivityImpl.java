@@ -1,10 +1,10 @@
-package com.jinternals.support.agent.etl.workflow.activities.impl;
+package com.jinternals.support.agent.etl.workflow.indexing.activities.impl;
 
 import com.jinternals.support.agent.etl.services.IndexingService;
 import com.jinternals.support.agent.etl.workflow.TaskQueue;
-import com.jinternals.support.agent.etl.workflow.activities.IndexingActivity;
-import com.jinternals.support.agent.etl.workflow.activities.dto.IndexingActivityInput;
-import com.jinternals.support.agent.etl.workflow.activities.dto.IndexingActivityOutput;
+import com.jinternals.support.agent.etl.workflow.indexing.activities.IndexingActivity;
+import com.jinternals.support.agent.etl.workflow.indexing.activities.dto.IndexingActivityInput;
+import com.jinternals.support.agent.etl.workflow.indexing.activities.dto.IndexingActivityOutput;
 import io.temporal.spring.boot.ActivityImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,14 +26,14 @@ public class IndexingActivityImpl implements IndexingActivity {
         try {
             List<String> chunkIds = indexingService.indexDocumentFromURL(
                             indexingActivityInput.sourcePath(),
-                            indexingActivityInput.keywords(),
+                            indexingActivityInput.metadata(),
                             indexingActivityInput.reIndex())
                     .stream().map(Document::getId).toList();
             return new IndexingActivityOutput(indexingActivityInput.sourcePath(), chunkIds, "Indexed successfully.");
 
         } catch (Exception e) {
             log.error("Indexing failed", e);
-            throw new RuntimeException("Indexing failed");
+            throw new RuntimeException("Indexing failed", e);
         }
 
     }
