@@ -27,3 +27,4 @@ https://www.anthropic.com/research/building-effective-agents
 
 ### Context Engineering
 https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html
+https://cognition.ai/blog/dont-build-multi-agents#a-theory-of-building-long-running-agents
