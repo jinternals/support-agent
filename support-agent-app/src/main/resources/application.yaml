@@ -8,18 +8,27 @@ spring:
         repository:
           jdbc:
             initialize-schema: always
-    ollama:
-      base-url: http://localhost:11434
-      init:
-        pull-model-strategy: when_missing
-        timeout: 10m
-        max-retries: 2
-      embedding:
-        model: dengcao/Qwen3-Embedding-8B:Q8_0
+#    ollama:
+#      base-url: http://localhost:11434
+#      init:
+#        pull-model-strategy: when_missing
+#        timeout: 10m
+#        max-retries: 2
+#      embedding:
+#        model: dengcao/Qwen3-Embedding-8B:Q8_0
+#      chat:
+#        model: qwen3:8b
+#        options:
+#          temperature: 0.1
+    openai:
+      api-key: "na"
+      base-url: "http://localhost:12434/engines"
       chat:
-        model: qwen3:8b
         options:
-          temperature: 0.1
+          model: ai/qwen3:8B-Q4_K_M
+      embedding:
+        options:
+          model: ai/mxbai-embed-large:latest
     vectorstore:
       qdrant:
         host: localhost
