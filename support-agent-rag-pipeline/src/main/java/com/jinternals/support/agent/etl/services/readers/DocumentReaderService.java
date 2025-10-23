@@ -13,7 +13,7 @@ import static org.apache.commons.io.FilenameUtils.getExtension;
 
 @Service
 @RequiredArgsConstructor
-public class DocumentReader {
+public class DocumentReaderService {
     private final List<Reader> readers;
 
     public List<Document> readFrom(Resource resource) {
