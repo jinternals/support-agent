@@ -5,6 +5,18 @@
 
 This is a demo application that showcases capabilities such as **Retrieval-Augmented Generation (RAG)** and **Tool Calling** using **Spring AI MCP (Model Context Protocol)**.
 
+**Challenges with Large Language Models (LLMs)**
+
+- Limited built-in knowledge
+- No access to external data sources
+- Restricted context window
+- Potential for hallucination
+
+**How We Overcome These Challenges**
+By integrating RAG, MCP, and multi-step orchestration, we can enhance LLMs with real-time data access, richer context, and more reliable outputs.
+
+
+---
 ## 📦 Modules
 
 The application is divided into the following modules:
