@@ -12,10 +12,13 @@ This is a demo application that showcases capabilities such as **Retrieval-Augme
 - Restricted context window
 - Potential for hallucination
 
-**How We Overcome These Challenges**
+**How We Overcome These Challenges?**
 
 By integrating RAG, MCP, and multi-step orchestration, we can enhance LLMs with real-time data access, richer context, and more reliable outputs.
 
+**What makes a system agentic?**
+
+An agentic system is powered by an LLM equipped with external tools and dynamic context, enabling the model to decide how and when to use those tools to successfully complete a task.
 
 ---
 ## 📦 Modules
