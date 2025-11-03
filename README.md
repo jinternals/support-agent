@@ -13,6 +13,7 @@ This is a demo application that showcases capabilities such as **Retrieval-Augme
 - Potential for hallucination
 
 **How We Overcome These Challenges**
+
 By integrating RAG, MCP, and multi-step orchestration, we can enhance LLMs with real-time data access, richer context, and more reliable outputs.
 
 
