@@ -28,62 +28,59 @@ import java.util.List;
 @AllArgsConstructor
 public class AssistantAgentConfiguration {
 
-    public static final int SIMPLE_LOGGER_ADVISOR_ORDER = 100;
-    @Value("classpath:/prompts/system-prompt-kb.txt")
-    private Resource systemPromptResourceKb;
+        public static final int SIMPLE_LOGGER_ADVISOR_ORDER = 100;
+        @Value("classpath:/prompts/system-prompt-kb.txt")
+        private Resource systemPromptResourceKb;
 
-    private List<McpSyncClient> mcpSyncClients;
+        private List<McpSyncClient> mcpSyncClients;
 
-    @Bean
-    public ChatClient chatClient(ChatClient.Builder builder,
-                                 SimpleLoggerAdvisor simpleLoggerAdvisor,
-                                 MessageChatMemoryAdvisor messageChatMemoryAdvisor,
-                                 @Qualifier("retrievalAugmentationAdvisor")
-                                 Advisor retrievalAugmentationAdvisor
-    ) {
+        @Bean
+        public ChatClient chatClient(ChatClient.Builder builder,
+                        SimpleLoggerAdvisor simpleLoggerAdvisor,
+                        MessageChatMemoryAdvisor messageChatMemoryAdvisor,
+                        @Qualifier("retrievalAugmentationAdvisor") Advisor retrievalAugmentationAdvisor) {
 
-        return builder
-                .defaultSystem(systemPromptResourceKb)
-                .defaultAdvisors(
-                        messageChatMemoryAdvisor,
-                        retrievalAugmentationAdvisor,
-                        simpleLoggerAdvisor
-                )
-                .defaultToolCallbacks(new SyncMcpToolCallbackProvider(mcpSyncClients))
-                .build();
-    }
+                return builder
+                                .defaultSystem(systemPromptResourceKb)
+                                .defaultAdvisors(
+                                                messageChatMemoryAdvisor,
+                                                retrievalAugmentationAdvisor,
+                                                simpleLoggerAdvisor)
+                                .defaultToolCallbacks(SyncMcpToolCallbackProvider.builder().mcpClients(mcpSyncClients).build())
+                                .build();
+        }
 
-    @Bean
-    public SimpleLoggerAdvisor simpleLoggerAdvisor() {
-        return new SimpleLoggerAdvisor(SIMPLE_LOGGER_ADVISOR_ORDER);
-    }
+        @Bean
+        public SimpleLoggerAdvisor simpleLoggerAdvisor() {
+                return new SimpleLoggerAdvisor(SIMPLE_LOGGER_ADVISOR_ORDER);
+        }
 
-    @Bean
-    public MessageChatMemoryAdvisor messageChatMemoryAdvisor(JdbcChatMemoryRepository chatMemoryRepository) {
+        @Bean
+        public MessageChatMemoryAdvisor messageChatMemoryAdvisor(JdbcChatMemoryRepository chatMemoryRepository) {
 
-        ChatMemory chatMemory = MessageWindowChatMemory.builder()
-                .chatMemoryRepository(chatMemoryRepository)
-                .build();
+                ChatMemory chatMemory = MessageWindowChatMemory.builder()
+                                .chatMemoryRepository(chatMemoryRepository)
+                                .build();
 
-        return MessageChatMemoryAdvisor.builder(chatMemory).build();
-    }
+                return MessageChatMemoryAdvisor.builder(chatMemory).build();
+        }
 
-    @Bean(name = "retrievalAugmentationAdvisor")
-    public Advisor retrievalAugmentationAdvisor(VectorStore vectorStore) {
-        var contextualQueryAugmenter = ContextualQueryAugmenter.builder()
-                .allowEmptyContext(false)
-                .build();
+        @Bean(name = "retrievalAugmentationAdvisor")
+        public Advisor retrievalAugmentationAdvisor(VectorStore vectorStore) {
+                var contextualQueryAugmenter = ContextualQueryAugmenter.builder()
+                                .allowEmptyContext(false)
+                                .build();
 
-        var vectorStoreDocumentRetriever = VectorStoreDocumentRetriever.builder()
-                .vectorStore(vectorStore)
-                .similarityThreshold(0.4)
-                .topK(8)
-                .build();
+                var vectorStoreDocumentRetriever = VectorStoreDocumentRetriever.builder()
+                                .vectorStore(vectorStore)
+                                .similarityThreshold(0.4)
+                                .topK(8)
+                                .build();
 
-        return RetrievalAugmentationAdvisor.builder()
-                .documentRetriever(vectorStoreDocumentRetriever)
-                .queryAugmenter(contextualQueryAugmenter)
-                .build();
-    }
+                return RetrievalAugmentationAdvisor.builder()
+                                .documentRetriever(vectorStoreDocumentRetriever)
+                                .queryAugmenter(contextualQueryAugmenter)
+                                .build();
+        }
 
 }

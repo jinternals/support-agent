@@ -1,16 +1,5 @@
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    mappings:
-      access: read-only
-
-
 server:
   port: 8081
-# Using spring-ai-starter-mcp-server-webmvc
 spring:
   ai:
     mcp:
@@ -20,6 +9,26 @@ spring:
         version: 1.0.0
         type: SYNC
         instructions: "This server provides support ticket creation tools and resources"
+
+# Actuator and Metrics
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info,metrics,prometheus,mcp
+  metrics:
+    tags:
+      application: support-mcp
+  tracing:
+    sampling:
+      probability: 1.0
+
+# Agent Configuration
+agent:
+  reflection:
+    enabled: true
+    threshold: 7.0
 
 logging.level.org.springframework.ai: DEBUG
 logging.level.io.modelcontextprotocol: DEBUG

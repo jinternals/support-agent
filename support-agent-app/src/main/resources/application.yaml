@@ -8,18 +8,23 @@ spring:
         repository:
           jdbc:
             initialize-schema: always
-#    ollama:
-#      base-url: http://localhost:11434
-#      init:
-#        pull-model-strategy: when_missing
-#        timeout: 10m
-#        max-retries: 2
-#      embedding:
-#        model: dengcao/Qwen3-Embedding-8B:Q8_0
-#      chat:
-#        model: qwen3:8b
-#        options:
-#          temperature: 0.1
+      client:
+        observations:
+          include-prompt: true
+          include-completion: true
+          include-error-logging: true
+    #    ollama:
+    #      base-url: http://localhost:11434
+    #      init:
+    #        pull-model-strategy: when_missing
+    #        timeout: 10m
+    #        max-retries: 2
+    #      embedding:
+    #        model: dengcao/Qwen3-Embedding-8B:Q8_0
+    #      chat:
+    #        model: qwen3:8b
+    #        options:
+    #          temperature: 0.1
     openai:
       api-key: "na"
       base-url: "http://localhost:12434/engines"
@@ -47,6 +52,25 @@ spring:
     url: jdbc:postgresql://localhost:5432/assistant
     username: assistant
     password: assistant
+
+# Actuator and Metrics
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,mcp
+  metrics:
+    tags:
+      application: support-agent
+  tracing:
+    sampling:
+      probability: 1.0
+
+# Agent Configuration
+agent:
+  reflection:
+    enabled: true
+    threshold: 7.0
 
 logging.level.org.springframework.ai: DEBUG
 logging.level.io.modelcontextprotocol: DEBUG
