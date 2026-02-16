@@ -10,9 +10,8 @@ spring:
             initialize-schema: always
       client:
         observations:
-          include-prompt: true
-          include-completion: true
-          include-error-logging: true
+          log-prompt: true
+          log-completion: true
     #    ollama:
     #      base-url: http://localhost:11434
     #      init:
@@ -58,13 +57,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,prometheus,mcp
+        include: health,info,metrics,prometheus
   metrics:
     tags:
       application: support-agent
-  tracing:
-    sampling:
-      probability: 1.0
 
 # Agent Configuration
 agent:

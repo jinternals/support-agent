@@ -34,34 +34,6 @@ public class VectorDataLoaderService {
     @SneakyThrows
     @PostConstruct
     public void init() {
-//
-//        String jsonContent = StreamUtils.copyToString(kbArticlesJson.getInputStream(), StandardCharsets.UTF_8);
-//        List<Map<String, Object>> rawArticles = objectMapper.readValue(jsonContent, new TypeReference<>() {
-//        });
-//
-//        List<Document> documents = rawArticles.stream().map(article -> {
-//            Map<String, Object> metadata = new HashMap<>();
-//            metadata.put("title", article.get("title"));
-//            metadata.put("category", article.get("category"));
-//            metadata.put("url", article.get("url"));
-//            metadata.put("tags", article.get("tags"));
-//            metadata.put("context", CONTEXT);
-//
-//
-//
-//
-//            return new Document(valueOf(article.get("id")), valueOf(article.get("content")), metadata);
-//        }).toList();
-//
-//        // Step 3: Delete existing IDs (optional)
-//        List<String> ids = documents.stream().map(Document::getId).toList();
-//        log.info("Deleting existing documents: {}" , ids.size());
-//        vectorStore.delete(ids);
-//
-//        // Step 4: Add new documents
-//        log.info("Inserting documents: {}"  , documents.size());
-//        vectorStore.add(documents);
-
 
         String jsonContent = StreamUtils.copyToString(kbArticlesJson.getInputStream(), StandardCharsets.UTF_8);
         List<Map<String, Object>> rawArticles = objectMapper.readValue(jsonContent, new TypeReference<>() {});

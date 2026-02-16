@@ -10,25 +10,19 @@ spring:
         type: SYNC
         instructions: "This server provides support ticket creation tools and resources"
 
-# Actuator and Metrics
+# Actuator and Metrics (Spring Boot 4)
 management:
   endpoints:
     web:
-      base-path: /actuator
       exposure:
-        include: health,info,metrics,prometheus,mcp
+        include: health,info,metrics,prometheus
   metrics:
     tags:
       application: support-mcp
-  tracing:
-    sampling:
-      probability: 1.0
+  observations:
+    annotations:
+      enabled: true
 
-# Agent Configuration
-agent:
-  reflection:
-    enabled: true
-    threshold: 7.0
 
 logging.level.org.springframework.ai: DEBUG
 logging.level.io.modelcontextprotocol: DEBUG
