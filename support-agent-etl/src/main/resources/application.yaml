@@ -2,18 +2,15 @@ spring:
     main:
       web-application-type: none
     ai:
-      ollama:
-        base-url: http://localhost:11434
-        init:
-          pull-model-strategy: when_missing
-          timeout: 10m
-          max-retries: 2
-        embedding:
-          model: mxbai-embed-large:latest
+      openai:
+        api-key: "na"
+        base-url: "http://localhost:12434/engines"
         chat:
-          model: Mradul/gemma3-tools:27b
           options:
-            temperature: 0.6
+            model: ai/qwen3:8B-Q4_K_M
+        embedding:
+          options:
+            model: ai/mxbai-embed-large:latest
       vectorstore:
         qdrant:
           host: localhost

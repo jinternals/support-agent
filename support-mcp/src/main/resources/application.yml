@@ -5,7 +5,7 @@ management:
         include: "*"
   endpoint:
     mappings:
-      enabled: true
+      access: read-only
 
 
 server:
@@ -16,17 +16,10 @@ spring:
     mcp:
       server:
         name: support-mcp-server
+        protocol: stateless
         version: 1.0.0
         type: SYNC
         instructions: "This server provides support ticket creation tools and resources"
-        sse-message-endpoint: /mcp/messages
-        capabilities:
-          tool: true
-          resource: true
-          prompt: true
-          completion: true
-        enabled: true
-        expose-all-tools: true
 
 logging.level.org.springframework.ai: DEBUG
 logging.level.io.modelcontextprotocol: DEBUG

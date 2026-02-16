@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
+import org.springaicommunity.mcp.annotation.McpTool;
+import org.springaicommunity.mcp.annotation.McpToolParam;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
@@ -22,7 +24,7 @@ public class SupportTicketTool {
 
     private final SupportTicketService supportTicketService;
 
-    @Tool(
+    @McpTool(
             name = "createSupportTicket",
             description = """
                     Create a new support ticket ONLY when the user reports a product/app issue that cannot be solved from known KB answers.
@@ -38,7 +40,7 @@ public class SupportTicketTool {
                     """
     )
     public Ticket createSupportTicket(
-            @ToolParam(description = "Short, specific problem title (<=120 chars). Avoid vague titles like 'help'.")
+            @McpToolParam(description = "Short, specific problem title (<=120 chars). Avoid vague titles like 'help'.")
             @NotBlank @Size(max = 120)
             String title,
 

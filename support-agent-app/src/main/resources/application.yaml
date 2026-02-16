@@ -38,15 +38,11 @@ spring:
         initialize-schema: true
     mcp:
       client:
-        enabled: true
-        version: 1.0.0
-        name: support-mcp-server
-        type: sync
-        sse:
+        streamable-http:
           connections:
-            supportMcpServer:
+            support-mcp-server:
               url: http://localhost:8081
-              sse-endpoint: /sse
+
   datasource:
     url: jdbc:postgresql://localhost:5432/assistant
     username: assistant

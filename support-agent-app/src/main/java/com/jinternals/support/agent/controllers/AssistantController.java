@@ -12,6 +12,7 @@ public class AssistantController {
 
     private final AssistantService assistantService;
 
+
     @PostMapping("/ai/assistant/{conversationId}")
     public Answer askQuestion(@PathVariable("conversationId") String conversationId,
                                     @RequestBody Question question) {

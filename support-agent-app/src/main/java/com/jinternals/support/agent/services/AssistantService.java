@@ -2,24 +2,14 @@ package com.jinternals.support.agent.services;
 
 import com.jinternals.support.agent.domain.Answer;
 import com.jinternals.support.agent.domain.Question;
-import io.modelcontextprotocol.client.McpSyncClient;
-import io.modelcontextprotocol.spec.McpSchema;
-import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
-import org.springframework.ai.chat.messages.Message;
-import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.vectorstore.VectorStore;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
-
-import java.util.List;
-import java.util.Map;
 
 import static org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor.FILTER_EXPRESSION;
 import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
@@ -30,16 +20,20 @@ import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 public class AssistantService {
 
     private final ChatClient chatClient;
+    @Value("classpath:/prompts/user-prompt.txt")
+    private Resource userPromptResource;
 
     public Answer getAnswer(String conversationId, Question question) {
 
-        List<Message> messages = List.of(new UserMessage(question.question()));
-
-        Prompt prompt = new Prompt(messages);
+        PromptTemplate promptTemplate = new PromptTemplate(userPromptResource);
+        promptTemplate.add("userId", question.userId());
+        promptTemplate.add("question", question.question());
+        Prompt prompt = new  Prompt(promptTemplate.createMessage());
 
         String result = this.chatClient.prompt(prompt)
-                .system(sp -> sp.param("userId",  question.userId()))
+               // .system(sp -> sp.param("userId",  question.userId()))
                 .advisors(a -> a
+                        .param("userId",  question.userId())
                         .param(CONVERSATION_ID, conversationId)
                         .param(FILTER_EXPRESSION, "context == 'support'")
                 )
